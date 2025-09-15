@@ -20,7 +20,7 @@ export default function AdminLogin() {
     setError("");
 
     try {
-      const res = await axios.post("http://127.0.0.1:5000/auth/admin-login", {
+      const res = await axios.post("https://owl-task3.onrender.com/auth/admin-login", {
         email,
         password,
       }, {
@@ -30,9 +30,7 @@ export default function AdminLogin() {
       console.log('Backend response:', res.data); // Debug log
       
       if (res.data.token) {
-        // Extract name from email if not provided
         const name = email.split('@')[0];
-        // Call login with proper parameters
         login({
           token: res.data.token,
           name: name,
