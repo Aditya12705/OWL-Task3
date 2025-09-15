@@ -16,12 +16,11 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:5000/auth/login", {
+      const res = await axios.post("https://owl-task3.onrender.com/auth/login", {
         email,
         password,
       });
       if (res.data.token) {
-        // Use the name from the backend response (backend now provides proper fallback)
         const name = res.data.name || email.split('@')[0];
         const userEmail = res.data.email || email;
         console.log("Backend response:", res.data);
