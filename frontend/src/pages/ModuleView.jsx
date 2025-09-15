@@ -10,7 +10,7 @@ export default function ModuleView() {
   useEffect(() => {
     const fetchTasks = async () => {
       const token = localStorage.getItem('token')
-      const res = await axios.get(`http://127.0.0.1:5000/tasks/${id}`, {
+      const res = await axios.get(`https://owl-task3.onrender.com/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       setTasks(res.data)
@@ -20,10 +20,10 @@ export default function ModuleView() {
 
   const completeTask = async (taskId) => {
     const token = localStorage.getItem('token')
-    await axios.post(`http://127.0.0.1:5000/progress/${taskId}`, {}, {
+    await axios.post(`https://owl-task3.onrender.com/progress/${taskId}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    const adviceRes = await axios.get('http://127.0.0.1:5000/mentor/advice', {
+    const adviceRes = await axios.get('https://owl-task3.onrender.com/mentor/advice', {
       headers: { Authorization: `Bearer ${token}` }
     })
     setAdvice(adviceRes.data.advice)
