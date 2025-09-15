@@ -23,11 +23,10 @@ export default function Register() {
       };
       console.log("Sending registration data:", registrationData);
       
-      const res = await axios.post("http://127.0.0.1:5000/auth/register", registrationData);
+      const res = await axios.post("https://owl-task3.onrender.com/auth/register", registrationData);
       if (res.data.msg === "Registration successful") {
-        // Auto-login after registration
         try {
-          const loginRes = await axios.post("http://127.0.0.1:5000/auth/login", {
+          const loginRes = await axios.post("https://owl-task3.onrender.com/auth/login", {
             email,
             password,
           });
@@ -52,7 +51,6 @@ export default function Register() {
 
   return (
     <div style={styles.container}>
-      {/* Animated Background */}
       <Particles
         options={{
           background: { color: "#0B0F19" },
@@ -67,7 +65,6 @@ export default function Register() {
         style={{ position: "absolute", top: 0, left: 0, zIndex: 0 }}
       />
 
-      {/* Glass Register Card */}
       <motion.div
         className="animate__animated animate__fadeInUp"
         initial={{ opacity: 0, y: 80 }}
