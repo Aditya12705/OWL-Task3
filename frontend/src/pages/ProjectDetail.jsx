@@ -8,27 +8,23 @@ const API_BASE =
   (typeof import.meta !== "undefined" &&
     import.meta.env &&
     import.meta.env.VITE_API_BASE_URL) ||
-  "http://127.0.0.1:5000";
+  "https://owl-task3.onrender.com";
 
-// Format URL helper function
 const formatUrl = (url) => {
   if (!url) return '';
   return url.startsWith('http') ? url : `https://${url}`;
 };
 
-// FIXED: New robust date formatting function to handle 'dd/mm/yyyy'
 const formatDate = (dmyString) => {
   if (!dmyString || typeof dmyString !== 'string') return 'Not set';
   
   const parts = dmyString.split('/');
   if (parts.length !== 3) {
-    // Fallback for other formats like ISO strings
     const date = new Date(dmyString);
     return !isNaN(date.getTime()) ? date.toLocaleDateString('en-GB') : 'Invalid Date';
   }
   
   const [day, month, year] = parts;
-  // Note: month is 0-indexed in JavaScript's Date constructor
   const date = new Date(year, month - 1, day);
   
   if (isNaN(date.getTime())) {
@@ -65,7 +61,6 @@ export default function ProjectDetail() {
     }).then(() => setParticlesReady(true));
   }, []);
 
-  // Fetch project data
   useEffect(() => {
     const fetchProjectDetails = async () => {
       setLoading(true);
@@ -96,7 +91,6 @@ export default function ProjectDetail() {
     }
   }, [id, location.state]);
 
-  // Check application status
   useEffect(() => {
     const checkApplicationStatus = async () => {
       if (!project) return;
