@@ -6,10 +6,8 @@ import { motion } from "framer-motion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
-// API configuration
-const API_BASE = 'http://127.0.0.1:5000';
+const API_BASE = 'https://owl-task3.onrender.com';
 
-// Helper to check if submission data exists to display the section
 const hasSubmissionData = (app) => {
   const submission = app?.submission || {};
   return submission.github_url || submission.live_url || submission.docs_url || submission.notes || app.githubLink || app.liveLink;
