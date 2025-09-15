@@ -9,15 +9,13 @@ const API_BASE =
   (typeof import.meta !== "undefined" &&
     import.meta.env &&
     import.meta.env.VITE_API_BASE_URL) ||
-  "http://127.0.0.1:5000";
+  "https://owl-task3.onrender.com";
 
-// FIXED: New robust date formatting function to handle 'dd/mm/yyyy'
 const formatDate = (dmyString) => {
   if (!dmyString || typeof dmyString !== 'string') return 'Not set';
   
   const parts = dmyString.split('/');
   if (parts.length !== 3) {
-    // Fallback for other formats like ISO strings
     const date = new Date(dmyString);
     return !isNaN(date.getTime()) ? date.toLocaleDateString('en-GB') : 'Invalid Date';
   }
