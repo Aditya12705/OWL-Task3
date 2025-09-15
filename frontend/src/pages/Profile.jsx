@@ -11,7 +11,6 @@ export default function Profile() {
   const [name, setName] = useState(userProfile?.name || "");
   const [email, setEmail] = useState(userProfile?.email || "");
 
-  // Update state when userProfile changes
   useEffect(() => {
     if (userProfile) {
       setName(userProfile.name || "");
@@ -30,7 +29,6 @@ export default function Profile() {
     navigate("/dashboard");
   };
 
-  // Particle engine init
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -40,7 +38,6 @@ export default function Profile() {
     });
   }, []);
 
-  // Media query for responsiveness
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   useEffect(() => {
     const handleResize = () => {
@@ -50,7 +47,6 @@ export default function Profile() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 3D constellation particle config
   const particleOptions = useMemo(
     () => ({
       background: {
@@ -180,7 +176,7 @@ export default function Profile() {
       width: "100%",
       padding: "12px 16px",
       marginTop: "8px",
-      border: "none", // 🔥 no white borders
+      border: "none", 
       borderRadius: "8px",
       backgroundColor: "rgba(255, 255, 255, 0.08)",
       color: "white",
@@ -246,7 +242,6 @@ export default function Profile() {
 
   return (
     <div style={styles.container}>
-      {/* 3D Constellation Background */}
       <Particles
         id="constellation"
         options={particleOptions}
