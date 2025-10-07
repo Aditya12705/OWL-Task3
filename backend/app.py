@@ -430,17 +430,17 @@ def admin_login():
     
 @app.route('/api/health')
 def health_check():
-        """
-        A simple endpoint to verify that the app is running and can connect to the database.
-        """
+    """
+    A simple endpoint to verify that the app is running and can connect to the database.
+    """
     try:
         # The 'ping' command is a lightweight way to check the database connection
-       mongo.db.command('ping')
-            return jsonify({"status": "ok", "database": "connected"}), 200
+        mongo.db.command('ping')
+        return jsonify({"status": "ok", "database": "connected"}), 200
     except Exception as e:
-            # If the ping fails, the app is unhealthy
-       app.logger.error(f"Health check failed: {e}")
-            return jsonify({"status": "error", "database": "disconnected"}), 500
+        # If the ping fails, the app is unhealthy
+        app.logger.error(f"Health check failed: {e}")
+        return jsonify({"status": "error", "database": "disconnected"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
